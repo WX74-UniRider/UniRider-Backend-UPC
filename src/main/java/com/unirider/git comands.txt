@@ -1,0 +1,42 @@
+COMANDOS GIT
+
+cd  ejemplo cd c:
+cd .. para retroceder
+
+cd (nombre de la carpeta)  para acedder a un carpeta
+
+mkdir :para crear una carpeta
+rmdir :para elimanr una carpeta
+rm :elimanr un archivo
+
+ls  para ver todo los archivos
+
+ls -a para ver archvos ocultos
+
+git init para inicair una repo creo
+
+git add nombre del archivo   : para subilro area de prepapracion ,listo para subir al reposotiro
+
+git status  mostrar infor del area de preparacion
+
+git rm --cached (nombre del archiv)  :para remover un arhcivos del area d epreparacion
+
+git comit -m "agregando primer archivo" -a :
+
+git log :para ver los comits 
+
+git log --oneline :para ver menos pero detallanda con hash
+------------
+git branch  :para evr las ramas
+
+git branch(nomrbe de la rama) para crer una rama
+
+git checkout (nombre d e la rama) :pra moversre ala rama  / git switch nombre de la rama  : otra manera de moversr ala rama
+
+git switch -c :para crear una rama y moverse ya en ella
+
+git branch -d (nomrbe de la rama)	 elimnar una rama
+-----------------------
+Para fusionar ramas devemos primero irnos al rama procipal master o main :
+
+git merge "nombre de la rama"
