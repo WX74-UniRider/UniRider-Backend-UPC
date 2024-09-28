@@ -104,8 +104,8 @@ public class UserCommandServiceImpl implements UserCommandService {
                 user,
                 command.firstName(),
                 command.lastName(),
-                command.vehiclePlate(),
                 "999 999 999",
+                command.vehiclePlate(),
                 "No insurance provided",
                 "No vehicle model provided"
         );
