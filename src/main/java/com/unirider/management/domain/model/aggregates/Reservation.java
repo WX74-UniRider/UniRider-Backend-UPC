@@ -34,6 +34,9 @@ public class Reservation extends AuditableAbstractAggregateRoot<Reservation> {
     private String destination;
     private String status;                  // Estado: PENDING, CONFIRMED, CANCELED, etc.
 
+    public Reservation() {
+    }
+
 
     public Reservation(CreateReservationCommand command, Trip trip, User passenger, User driver) {
         this.trip = trip;

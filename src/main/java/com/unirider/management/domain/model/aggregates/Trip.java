@@ -33,6 +33,8 @@ public class Trip extends AuditableAbstractAggregateRoot<Trip> {
 
     private String status;
 
+    private Double price;
+
     public Trip(){}
 
     public Trip(CreateTripCommand command , User driver, User passenger) {
@@ -40,5 +42,6 @@ public class Trip extends AuditableAbstractAggregateRoot<Trip> {
         this.driver = driver;
         this.passenger = passenger;
         this.status = command.status();
+        this.price = command.price();
     }
 }

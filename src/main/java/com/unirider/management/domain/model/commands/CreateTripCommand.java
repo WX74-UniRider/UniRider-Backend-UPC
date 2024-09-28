@@ -6,6 +6,7 @@ public record CreateTripCommand(
         String destination,
         Long driverId,
         Long passengerId,
-        String status
+        String status,
+        Double price
 ) {
 }
