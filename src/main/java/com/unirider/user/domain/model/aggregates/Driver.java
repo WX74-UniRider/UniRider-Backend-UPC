@@ -33,6 +33,9 @@ public class Driver extends AuditableAbstractAggregateRoot<Driver> {
     @NotBlank
     private String vehicleModel = "No vehicle model provided";
 
+    @NotBlank
+    private String destino = "No destination provided";
+
 
     @OneToOne
     @JoinColumn(name = "userId", nullable = false)
