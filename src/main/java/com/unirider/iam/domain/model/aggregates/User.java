@@ -58,4 +58,8 @@ public class User extends AuditableAbstractAggregateRoot<User> {
         this.roles.addAll(validatedRoleSet);
         return this;
     }
+
+    public List<String> getSerializedRoles() {
+        return this.roles.stream().map(role -> role.getName().name()).toList();
+    }
 }
