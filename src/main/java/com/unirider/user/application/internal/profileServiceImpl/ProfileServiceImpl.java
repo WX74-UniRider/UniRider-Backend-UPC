@@ -34,6 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
             passenger.setPreferences(command.preferences());
             passenger.setPhoneNumber(command.phoneNumber());
             passenger.setAddress(command.address());
+            passenger.setIdCardUrl(command.idCardUrl());
             return passengerRepository.save(passenger);
         });
     }

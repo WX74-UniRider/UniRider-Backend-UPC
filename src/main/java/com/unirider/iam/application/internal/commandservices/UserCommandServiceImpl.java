@@ -76,7 +76,8 @@ public class UserCommandServiceImpl implements UserCommandService {
                 command.lastName(),
                 "No preferences provided.",
                 "999 999 999",
-                "No address provided."
+                "No address provided.",
+                "No id card provided."
         );
         passengerRepository.save(passenger);
 

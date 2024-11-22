@@ -9,6 +9,7 @@ public record UpdatePassengerCommand(
         String lastName,
         String preferences,
         String phoneNumber,
-        String address
+        String address,
+        String idCardUrl
 ) {
 }

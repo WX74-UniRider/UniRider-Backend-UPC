@@ -29,17 +29,21 @@ public class Passenger extends AuditableAbstractAggregateRoot<Passenger> {
     @NotBlank
     private String address = "No address provided";
 
+    @NotBlank
+    private String idCardUrl;
+
     @OneToOne
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    public Passenger(User user, String firstName, String lastName, String preferences, String phoneNumber, String address){
+    public Passenger(User user, String firstName, String lastName, String preferences, String phoneNumber, String address, String idCardUrl){
         this.user = user;
         this.firstName = firstName;
         this.lastName = lastName;
         this.preferences = preferences;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.idCardUrl = idCardUrl;
     }
 
     public Passenger(){}
