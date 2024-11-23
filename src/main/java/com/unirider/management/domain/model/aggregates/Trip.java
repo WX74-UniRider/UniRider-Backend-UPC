@@ -2,6 +2,7 @@ package com.unirider.management.domain.model.aggregates;
 
 import com.unirider.iam.domain.model.aggregates.User;
 import com.unirider.management.domain.model.commands.CreateTripCommand;
+import com.unirider.management.domain.model.commands.UpdateTripCommand;
 import com.unirider.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -17,15 +18,10 @@ import java.time.LocalDateTime;
 @Entity
 public class Trip extends AuditableAbstractAggregateRoot<Trip> {
 
-
     private String destination;
 
     @LastModifiedDate
     private LocalDateTime departureTime;
-
-    @ManyToOne
-    @JoinColumn(name = "passenger_id", nullable = false)
-    private User passenger;
 
     @ManyToOne
     @JoinColumn(name = "driver_id")
@@ -35,13 +31,21 @@ public class Trip extends AuditableAbstractAggregateRoot<Trip> {
 
     private Double price;
 
-    public Trip(){}
+    public Trip() {}
 
-    public Trip(CreateTripCommand command , User driver, User passenger) {
+    public Trip(CreateTripCommand command, User driver) {
         this.destination = command.destination();
         this.driver = driver;
-        this.passenger = passenger;
         this.status = command.status();
         this.price = command.price();
+        this.departureTime = command.departureTime();
+    }
+
+    public void updateTrip(UpdateTripCommand command, User driver) {
+        this.destination = command.destination();
+        this.driver = driver;
+        this.status = command.status();
+        this.price = command.price();
+        this.departureTime = command.departureTime();
     }
 }

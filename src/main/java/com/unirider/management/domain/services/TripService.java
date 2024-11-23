@@ -20,4 +20,6 @@ public interface TripService {
     Optional<Trip> handle(GetTripByIdQuery query);
 
     List<Trip> handle(GetAllTripsQuery query);
+
+    List<Trip> getTripsByDriverId(Long driverId);
 }

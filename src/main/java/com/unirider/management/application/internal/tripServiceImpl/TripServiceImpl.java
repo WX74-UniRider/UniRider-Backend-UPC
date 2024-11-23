@@ -28,18 +28,15 @@ public class TripServiceImpl implements TripService {
     @Override
     public Optional<Trip> handle(CreateTripCommand command) {
         User driver = userRepository.findById(command.driverId()).orElseThrow();
-        User passenger = userRepository.findById(command.passengerId()).orElseThrow();
-        Trip trip = new Trip(command, driver, passenger);
+        Trip trip = new Trip(command, driver);
         return Optional.of(tripRepository.save(trip));
     }
 
     @Override
     public Optional<Trip> handle(UpdateTripCommand command) {
         return tripRepository.findById(command.tripId()).map(trip -> {
-            trip.setDestination(command.destination());
-            trip.setDriver(command.driverId());
-            trip.setPassenger(command.passengerId());
-            trip.setStatus(command.status());
+            User driver = userRepository.findById(command.driverId()).orElseThrow();
+            trip.updateTrip(command, driver);
             return tripRepository.save(trip);
         });
     }
@@ -57,5 +54,10 @@ public class TripServiceImpl implements TripService {
     @Override
     public List<Trip> handle(GetAllTripsQuery query) {
         return tripRepository.findAll();
+    }
+
+    @Override
+    public List<Trip> getTripsByDriverId(Long driverId) {
+        return tripRepository.findByDriverId(driverId);
     }
 }

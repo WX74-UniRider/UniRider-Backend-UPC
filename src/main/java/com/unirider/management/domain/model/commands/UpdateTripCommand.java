@@ -1,12 +1,13 @@
 package com.unirider.management.domain.model.commands;
 
-import com.unirider.iam.domain.model.aggregates.User;
+import java.time.LocalDateTime;
 
 public record UpdateTripCommand(
         Long tripId,
         String destination,
-        User driverId,
-        User passengerId,
-        String status
+        Long driverId,
+        String status,
+        Double price,
+        LocalDateTime departureTime
 ) {
 }

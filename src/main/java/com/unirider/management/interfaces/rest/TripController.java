@@ -53,4 +53,8 @@ public class TripController {
     public ResponseEntity<List<Trip>> getAllTrips() {
         return ResponseEntity.ok(tripService.handle(new GetAllTripsQuery()));
     }
+    @GetMapping("/driver/{driverId}")
+    public ResponseEntity<List<Trip>> getTripsByDriverId(@PathVariable Long driverId) {
+        return ResponseEntity.ok(tripService.getTripsByDriverId(driverId));
+    }
 }
