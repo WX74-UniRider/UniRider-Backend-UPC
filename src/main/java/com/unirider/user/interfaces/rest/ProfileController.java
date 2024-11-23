@@ -1,9 +1,9 @@
 package com.unirider.user.interfaces.rest;
 
-import com.unirider.management.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.aggregates.Driver;
 import com.unirider.user.domain.model.aggregates.Passenger;
 import com.unirider.user.domain.model.commands.UpdateDriverCommand;
+import com.unirider.user.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.commands.UpdatePassengerCommand;
 import com.unirider.user.domain.model.queries.GetAllDriversQuery;
 import com.unirider.user.domain.model.queries.GetDriverByIdQuery;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/profile")
 @Tag(name = "Profile", description = "Profile Management Endpoints")
@@ -61,5 +63,12 @@ public class ProfileController {
     public ResponseEntity<Void> updateIdCardUrl(@PathVariable Long id, @RequestBody String idCardUrl) {
         profileService.updateIdCardUrl(new UpdateIdCardUrlCommand(id, idCardUrl));
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/passengers/user/{userId}")
+    public ResponseEntity<Passenger> getPassengerByUserId(@PathVariable Long userId) {
+        return profileService.getPassengerByUserId(userId)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

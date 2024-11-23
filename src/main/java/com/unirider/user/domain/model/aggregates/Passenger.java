@@ -33,7 +33,7 @@ public class Passenger extends AuditableAbstractAggregateRoot<Passenger> {
     private String idCardUrl;
 
     @OneToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Passenger(User user, String firstName, String lastName, String preferences, String phoneNumber, String address, String idCardUrl){

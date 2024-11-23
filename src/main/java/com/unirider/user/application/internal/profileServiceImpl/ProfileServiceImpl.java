@@ -1,9 +1,9 @@
 package com.unirider.user.application.internal.profileServiceImpl;
 
-import com.unirider.management.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.aggregates.Driver;
 import com.unirider.user.domain.model.aggregates.Passenger;
 import com.unirider.user.domain.model.commands.UpdateDriverCommand;
+import com.unirider.user.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.commands.UpdatePassengerCommand;
 import com.unirider.user.domain.model.queries.GetAllDriversQuery;
 import com.unirider.user.domain.model.queries.GetDriverByIdQuery;
@@ -75,5 +75,9 @@ public class ProfileServiceImpl implements ProfileService {
         Passenger passenger = passengerRepository.findById(command.passengerId()).orElseThrow();
         passenger.setIdCardUrl(command.idCardUrl());
         passengerRepository.save(passenger);
+    }
+    @Override
+    public Optional<Passenger> getPassengerByUserId(Long userId) {
+        return passengerRepository.findByUser_Id(userId);
     }
 }
