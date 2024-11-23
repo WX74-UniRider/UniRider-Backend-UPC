@@ -51,4 +51,11 @@ public class Trip extends AuditableAbstractAggregateRoot<Trip> {
         this.price = command.price();
         this.departureTime = command.departureTime();
     }
+    public void setStatus(String status) {
+        try {
+            this.status = TripStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid TripStatus value: " + status);
+        }
+    }
 }
