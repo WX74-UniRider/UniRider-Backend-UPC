@@ -32,7 +32,7 @@ public class Reservation extends AuditableAbstractAggregateRoot<Reservation> {
     private LocalDateTime reservationTime;
     private LocalDateTime tripStartTime;
     private String destination;
-    private String status;                  // Estado: PENDING, CONFIRMED, CANCELED, etc.
+    private String status;
 
     public Reservation() {
     }

@@ -3,6 +3,7 @@ package com.unirider.management.application.internal.tripServiceImpl;
 import com.unirider.iam.domain.model.aggregates.User;
 import com.unirider.iam.infrastructure.persistence.jpa.repositories.UserRepository;
 import com.unirider.management.domain.model.aggregates.Trip;
+import com.unirider.management.domain.model.aggregates.TripStatus;
 import com.unirider.management.domain.model.commands.CreateTripCommand;
 import com.unirider.management.domain.model.commands.UpdateTripCommand;
 import com.unirider.management.domain.model.queries.DeleteTripCommand;
@@ -59,5 +60,10 @@ public class TripServiceImpl implements TripService {
     @Override
     public List<Trip> getTripsByDriverId(Long driverId) {
         return tripRepository.findByDriverId(driverId);
+    }
+
+    @Override
+    public List<Trip> getTripsByStatus(TripStatus status) {
+        return tripRepository.findByStatus(status);
     }
 }

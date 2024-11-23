@@ -1,6 +1,7 @@
 package com.unirider.management.interfaces.rest;
 
 import com.unirider.management.domain.model.aggregates.Trip;
+import com.unirider.management.domain.model.aggregates.TripStatus;
 import com.unirider.management.domain.model.commands.CreateTripCommand;
 import com.unirider.management.domain.model.commands.UpdateTripCommand;
 import com.unirider.management.domain.model.queries.DeleteTripCommand;
@@ -56,5 +57,10 @@ public class TripController {
     @GetMapping("/driver/{driverId}")
     public ResponseEntity<List<Trip>> getTripsByDriverId(@PathVariable Long driverId) {
         return ResponseEntity.ok(tripService.getTripsByDriverId(driverId));
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Trip>> getTripsByStatus(@PathVariable TripStatus status) {
+        return ResponseEntity.ok(tripService.getTripsByStatus(status));
     }
 }

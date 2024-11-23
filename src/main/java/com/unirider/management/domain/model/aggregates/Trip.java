@@ -5,6 +5,8 @@ import com.unirider.management.domain.model.commands.CreateTripCommand;
 import com.unirider.management.domain.model.commands.UpdateTripCommand;
 import com.unirider.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
@@ -21,13 +23,14 @@ public class Trip extends AuditableAbstractAggregateRoot<Trip> {
     private String destination;
 
     @LastModifiedDate
-    private LocalDateTime departureTime;
+    private String departureTime;
 
     @ManyToOne
     @JoinColumn(name = "driver_id")
     private User driver;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private TripStatus status;
 
     private Double price;
 

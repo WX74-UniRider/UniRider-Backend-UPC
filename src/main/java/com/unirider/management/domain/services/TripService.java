@@ -1,6 +1,7 @@
 package com.unirider.management.domain.services;
 
 import com.unirider.management.domain.model.aggregates.Trip;
+import com.unirider.management.domain.model.aggregates.TripStatus;
 import com.unirider.management.domain.model.commands.CreateTripCommand;
 import com.unirider.management.domain.model.commands.UpdateTripCommand;
 import com.unirider.management.domain.model.queries.DeleteTripCommand;
@@ -22,4 +23,6 @@ public interface TripService {
     List<Trip> handle(GetAllTripsQuery query);
 
     List<Trip> getTripsByDriverId(Long driverId);
+    List<Trip> getTripsByStatus(TripStatus status);
+
 }
