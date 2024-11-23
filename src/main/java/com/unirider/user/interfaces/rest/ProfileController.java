@@ -1,5 +1,6 @@
 package com.unirider.user.interfaces.rest;
 
+import com.unirider.management.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.aggregates.Driver;
 import com.unirider.user.domain.model.aggregates.Passenger;
 import com.unirider.user.domain.model.commands.UpdateDriverCommand;
@@ -23,6 +24,7 @@ public class ProfileController {
     public ProfileController(ProfileService profileService) {
         this.profileService = profileService;
     }
+
 
     @PutMapping("/passenger")
     public ResponseEntity<Passenger> updatePassenger(@RequestBody UpdatePassengerCommand command) {
@@ -54,5 +56,10 @@ public class ProfileController {
     public ResponseEntity<List<Driver>> getDriversByDestination(@RequestParam String destination) {
         List<Driver> drivers = profileService.getDriversByDestination(destination);
         return ResponseEntity.ok(drivers);
+    }
+    @PatchMapping("/{id}/idCardUrl")
+    public ResponseEntity<Void> updateIdCardUrl(@PathVariable Long id, @RequestBody String idCardUrl) {
+        profileService.updateIdCardUrl(new UpdateIdCardUrlCommand(id, idCardUrl));
+        return ResponseEntity.noContent().build();
     }
 }

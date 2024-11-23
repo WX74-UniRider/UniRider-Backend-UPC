@@ -1,5 +1,6 @@
 package com.unirider.user.application.internal.profileServiceImpl;
 
+import com.unirider.management.domain.model.commands.UpdateIdCardUrlCommand;
 import com.unirider.user.domain.model.aggregates.Driver;
 import com.unirider.user.domain.model.aggregates.Passenger;
 import com.unirider.user.domain.model.commands.UpdateDriverCommand;
@@ -67,5 +68,12 @@ public class ProfileServiceImpl implements ProfileService {
 
     public List<Driver> getDriversByDestination(String destination) {
         return driverRepository.findByDestino(destination);
+    }
+
+    @Override
+    public void updateIdCardUrl(UpdateIdCardUrlCommand command) {
+        Passenger passenger = passengerRepository.findById(command.passengerId()).orElseThrow();
+        passenger.setIdCardUrl(command.idCardUrl());
+        passengerRepository.save(passenger);
     }
 }
